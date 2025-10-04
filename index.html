@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web jelek buat deboy</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+      color: #333;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #ff3b6e;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff6fa5;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #ff3b6e;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff3b6e;
+      font-size: 20px;
+      animation: floatUp 2s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-100px); }
+    }
+
+    #gombal {
+      margin-top: 25px;
+      font-size: 1.3em;
+      color: #555;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hai Debi Sayang 💖</h1>
+  <h1>AHAYYYY</h1>
+  <p>Klik tombol bawah enehhh, aku punya sesuatu buat kamu</p>
+  <button onclick="tampilGombal()">Klik Ini yang😍</button>
+  <div id="gombal"></div>
+
+  <script>
+    const gombalan = [
+      "Kamu tau gak bedanya kamu sama bintang?  Bintang cuma di langit, kalo kamu di hati aku ",
+      "Aku gak butuh kafein, soalnya kamu udah bikin aku melek tiap malam ",
+      "Kalau senyum kamu dijual, aku bakal jadi pelanggan tetap ",
+      "Kamu itu kayak WiFi — deket kamu sinyal bahagia aku full ",
+      "Jangan sering muncul di mimpi, nanti aku gak mau bangun 💤"
+    ];
+
+    function tampilGombal() {
+      const random = Math.floor(Math.random() * gombalan.length);
+      const teks = gombalan[random];
+      const gombalDiv = document.getElementById("gombal");
+      gombalDiv.style.opacity = 0;
+      setTimeout(() => {
+        gombalDiv.innerText = teks;
+        gombalDiv.style.opacity = 1;
+      }, 300);
+
+      // efek hati terbang
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤️";
+      heart.className = "heart";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = window.innerHeight - 50 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+  </script>
+</body>
+</html>
